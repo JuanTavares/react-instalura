@@ -8,7 +8,7 @@ export default class Timeline extends Component {
         this.state = {lista:[]}
     }
     componentDidMount() {
-        fetch('https://instalura-api.herokuapp.com//api/public/fotos/vitor')
+        fetch('https://instalura-api.herokuapp.com//api/public/fotos/rafael')
         .then(Response => Response.json())
         .then(fotos => {
             this.setState({lista: fotos});
