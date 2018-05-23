@@ -18,8 +18,11 @@ export default class Timeline extends Component {
     render() {
         return (
             <div className="fotos container">
-                <FotoItem />
-                <FotoItem />
+            
+            {
+                this.state.lista.map(foto => <FotoItem postagem = {foto}/>)
+            }
+
             </div>
         );
     }
