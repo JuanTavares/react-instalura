@@ -61,7 +61,7 @@ class FotoHeader extends Component {
         return (
             <header className="foto-header">
                 <figure className="foto-usuario">
-                    <img src="{this.props.postagem.urlPerfil}" alt="foto do usuario" />
+                    <img src={this.props.postagem.urlPerfil} alt="foto do usuario" />
                     <figcaption className="foto-usuario">
 
                         <a href="#">{this.props.postagem.loginUsuario}</a>
@@ -80,7 +80,7 @@ export default class FotoItem extends Component {
         return (
             <div className="foto">
                 <FotoHeader postagem={this.props.postagem} />
-                <img alt="foto" className="foto-src" src="{this.props.postagem.urlFoto}" />
+                <img alt="foto" className="foto-src" src={this.props.postagem.urlFoto} />
                 <FotoInfo postagem={this.props.postagem} />
                 <FotoAtualizacoes postagem={this.props.postagem} />
             </div>
