@@ -7,7 +7,7 @@ export default class Login extends Component {
         this.state = {msg: ''};
     }
 
-    envia() {
+    envia(event) {
         event.preventDefault();
         fetch('https://instalura-api.herokuapp.com//api/public/login', requestInfo)
             .then(response=> {
@@ -24,7 +24,7 @@ export default class Login extends Component {
         return (
             <div className="login-box">
                 <h1 className="header-logo">Instalura</h1>
-                <form onSubmit={this.envia}>
+                <form onSubmit={this.envia.bind(this)}>
                     <span>{this.state.msg}</span>
                     <input type="text" ref={(input) => this.login = input} />
                     <input type="password" ref={(input) => this.senha = input} />
