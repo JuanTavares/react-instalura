@@ -10,7 +10,7 @@ export default class Login extends Component {
     envia(event) {
         event.preventDefault();
 
-        const resquetInfo = {
+        const requestInfo = {
             method: 'POST',
             body: JSON.stringify({ login: this.login.value, senha: this.senha.value }),
             headers: new Headers({
