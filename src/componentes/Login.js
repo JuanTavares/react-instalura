@@ -26,6 +26,9 @@ export default class Login extends Component {
                     this.setState({ msg: 'Não foi possível fazer o login' })
                 }
             })
+            .then(token => {
+                console.log(token);
+            })
     }
 
     render() {
