@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 
 export default class Login extends Component {
 
+    envia() {
+        event.preventDefault();
+        
+    }
+
     render() {
 
         return (
