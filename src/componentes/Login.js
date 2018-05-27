@@ -23,11 +23,14 @@ export default class Login extends Component {
                 if (response.ok) {
                     return response.text();
                 } else {
-                    this.setState({ msg: 'Não foi possível fazer o login' })
+                    throw new Error('não foi possível fazer o login');
                 }
             })
             .then(token => {
                 console.log(token);
+            })
+            .catch(error => {
+                this.setState({ msg: error.message });
             })
     }
 
