@@ -20,7 +20,7 @@ export default class Timeline extends Component {
             <div className="fotos container">
             
             {
-                this.state.lista.map(foto => <FotoItem postagem = {foto}/>)
+                this.state.lista.map(foto => <FotoItem key={foto.id} postagem = {foto}/>)
             }
 
             </div>

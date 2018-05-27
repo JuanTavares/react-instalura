@@ -25,7 +25,7 @@ class FotoInfo extends Component {
 
                     {
                         this.props.postagem.likers.map(liker => {
-                            <a href="#">{liker.login},</a>
+                        return (<a key={liker.login} href="#">{liker.login},</a>)
                         })
                     }
 
@@ -42,7 +42,7 @@ class FotoInfo extends Component {
                     {
                         this.props.postagem.comentarios.map(comentario => {
                             return (
-                                <li className="comentario">
+                                <li className="comentario" key={comentario.id}>
                                     <a className="foto-info-autor">{comentario.login} </a>
                                     {comentario.texto}
                                 </li>
