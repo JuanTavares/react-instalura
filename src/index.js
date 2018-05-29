@@ -5,6 +5,7 @@ import './css/reset.css';
 import './css/login.css';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Login from './componentes/Login';
+import Logout from './componentes/Logout';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -24,6 +25,7 @@ ReactDOM.render(
                             <App />
                         )
                 )} />
+                <Route path="/logout" component={Logout}/>
             </Switch>
         </BrowserRouter>
     )
