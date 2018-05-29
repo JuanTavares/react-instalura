@@ -28,6 +28,7 @@ export default class Login extends Component {
             })
             .then(token => {
                 console.log(token);
+                this.props.history.push('/timeline');
             })
             .catch(error => {
                 this.setState({ msg: error.message });
