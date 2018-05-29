@@ -8,12 +8,22 @@ import Login from './componentes/Login';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
+function isLoggedIn() {
+    return localStorage.getItem('auth-token') === null;
+}
+
 ReactDOM.render(
     (
         <BrowserRouter>
             <Switch>
                 <Route exact path="/" component={Login} />
-                <Route path="/timeline" component={App} />
+                <Route exact path="/timeline" render={() => (
+                    isLoggedIn() ? (
+                        <Redirect to="/?msg=Você precisa estar logado para acessar o endereço" />
+                    ) : (
+                            <App />
+                        )
+                )} />
             </Switch>
         </BrowserRouter>
     )
