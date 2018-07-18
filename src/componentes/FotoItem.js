@@ -26,7 +26,7 @@ class FotoInfo extends Component {
 
                     {
                         this.props.postagem.likers.map(liker => {
-                            return (<a key={liker.login} href="#">{liker.login},</a>)
+                            return (<Link key={liker.login} href={`/timeline/${liker.login}`}>{liker.login},</Link>)
                         })
                     }
 
