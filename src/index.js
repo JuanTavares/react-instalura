@@ -3,31 +3,38 @@ import ReactDOM from 'react-dom';
 import './css/timeline.css';
 import './css/reset.css';
 import './css/login.css';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect, matchPath } from 'react-router-dom';
 import Login from './componentes/Login';
 import Logout from './componentes/Logout';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-function isLoggedIn() {
-    return localStorage.getItem('auth-token') === null;
+function verificaAutenticacao(nextState, replace) {
+    const match = matchPath('/timeline', {
+        path: nextState.match.url,
+        exact: true
+    })
+
+    let valida = false
+    if (match !== null) {
+        valida = match.isExact
+    }
+
+    if (valida && localStorage.getItem('auth-token') === null) {
+        return <Redirect to={{
+            pathname: '/',
+            state: { msg: 'Faça login para acessar esta página' }
+        }} />
+    }
+    return <App />
 }
 
 ReactDOM.render(
-    (
-        <BrowserRouter>
-            <Switch>
-                <Route exact path="/" component={Login} />
-                <Route exact path="/timeline" render={() => (
-                    isLoggedIn() ? (
-                        <Redirect to="/?msg=Você precisa estar logado para acessar o endereço" />
-                    ) : (
-                            <App />
-                        )
-                )} />
-                <Route path="/logout" component={Logout}/>
-            </Switch>
-        </BrowserRouter>
-    )
-    , document.getElementById('root'));
+    (<BrowserRouter>
+        <Switch>
+            <Route exact path="/" component={Login} />
+            <Route exact path="/timeline/:login?" render={verificaAutenticacao} />
+            <Route exact path="/logout" component={Logout} />
+        </Switch>
+    </BrowserRouter>), document.getElementById('root'));
 registerServiceWorker();
