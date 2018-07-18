@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Link from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class FotoAtualizacoes extends Component {
 
@@ -26,7 +26,7 @@ class FotoInfo extends Component {
 
                     {
                         this.props.postagem.likers.map(liker => {
-                        return (<a key={liker.login} href="#">{liker.login},</a>)
+                            return (<a key={liker.login} href="#">{liker.login},</a>)
                         })
                     }
 
@@ -65,7 +65,7 @@ class FotoHeader extends Component {
                     <img src={this.props.postagem.urlPerfil} alt="foto do usuario" />
                     <figcaption className="foto-usuario">
 
-                        <a href="#">{this.props.postagem.loginUsuario}</a>
+                        <Link to={`/timeline/${this.props.postagem.loginUsuario}`}>{this.props.postagem.loginUsuario}</Link>
 
                     </figcaption>
                 </figure>
