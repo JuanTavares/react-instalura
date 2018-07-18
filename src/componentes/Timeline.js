@@ -8,7 +8,13 @@ export default class Timeline extends Component {
         this.state = {lista:[]}
     }
     componentDidMount() {
-        fetch(`https://instalura-api.herokuapp.com//api/fotos?X-AUTH-TOKEN=${localStorage.getItem('auth-token')}`)
+        let urlPerfil;
+        if(this.props.login === undefined){
+            urlPerfil = `https://instalura-api.herokuapp.com//api/fotos?X-AUTH-TOKEN=${localStorage.getItem('auth-token')}` 
+        } else {
+            urlPerfil = `https://instalura-api.herokuapp.com//api/public/fotos/${this.props.login}`;
+        }
+        fetch(urlPerfil)
         .then(Response => Response.json())
         .then(fotos => {
             this.setState({lista: fotos});
