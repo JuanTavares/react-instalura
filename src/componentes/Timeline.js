@@ -3,8 +3,8 @@ import FotoItem from './FotoItem';
 
 export default class Timeline extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {lista:[]}
     }
     componentDidMount() {
@@ -19,6 +19,7 @@ export default class Timeline extends Component {
         .then(fotos => {
             this.setState({lista: fotos});
         });
+        console.log(this);
     }
 
     render() {
