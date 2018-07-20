@@ -33,8 +33,7 @@ ReactDOM.render(
     (<Router>
         <Switch>
             <Route exact path="/" component={Login} />
-            <Route exact path="/timeline/" render={verificaAutenticacao} />
-            <Route exact path="/timeline/:login" component={App} />
+            <Route exact path="/timeline/:login?" render={verificaAutenticacao} />
             <Route exact path="/logout" component={Logout} />
         </Switch>
     </Router>),
